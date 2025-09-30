@@ -44,7 +44,6 @@ app.use(
 app.use(
     cors({
         origin: config.FRONTEND_URL,
-        credentials: true,
         optionsSuccessStatus: 200,
     }),
 );
