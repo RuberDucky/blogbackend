@@ -40,13 +40,16 @@ app.use(
     }),
 );
 
+const corsOptions = {
+    origin: config.FRONTEND_URL,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 200,
+};
 // CORS configuration
-app.use(
-    cors({
-        origin: config.FRONTEND_URL,
-        optionsSuccessStatus: 200,
-    }),
-);
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Rate limiting
 app.use(generalLimiter);
